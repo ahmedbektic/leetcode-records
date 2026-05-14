@@ -5,10 +5,10 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        checked = dict()
-        for i, num in enumerate(nums):
-            if ((target - num) in checked):
-                return [checked.get(target - num), i]
-            checked.update({num:i})
-
-        
+        hashed = set(nums)
+        for num in hashed:
+            if (target - num) in hashed:
+                first = nums.index(num)
+                nums[first] = None
+                if (target - num) in nums:
+                    return [first, nums.index(target - num)]
