@@ -4,19 +4,17 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        cleaned = ''.join(c.lower() for c in s if c.isalnum())
-        #isalnum refers alphanumeric, isalpha refers alphabetic... isnumeric
+        st = ""
+        for char in s:
+            if char.isalnum():
+                st += char.lower()
 
         l = 0
-        r = len(cleaned)-1
-
-        while (l < r):
-            if cleaned[l] != cleaned[r]:
+        r = len(st)-1
+        for i in range(len(st) // 2):
+            if st[l] != st[r]:
                 return False
             l += 1
             r -= 1
+        
         return True
-
-        
-
-        
